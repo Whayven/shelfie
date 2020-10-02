@@ -35,7 +35,20 @@ export default class Form extends Component {
       name: "",
       price: 0,
       img: "",
+      id: null
     });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.currentProduct !== this.props.currentProduct) {
+      const { id, name, price, img } = this.props.currentProduct;
+      this.setState({
+        id,
+        name,
+        price,
+        img
+      })
+    }
   }
 
   resetForm = (e) => {
@@ -85,7 +98,10 @@ export default class Form extends Component {
             <button className="form-button" onClick={this.resetForm}>
               Cancel
             </button>
-            <button className="form-button" onClick={this.addProduct}>Add to Inventory</button>
+            {
+              !this.state.id ? <button className="form-button" onClick={this.addProduct}>Add to Inventory</button> : <button className="form-button">Save Changes</button>
+            }
+            
           </div>
         </form>
       </div>

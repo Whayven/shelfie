@@ -23,5 +23,10 @@ module.exports = {
 
     db.delete_item(id)
     .then(() => res.status(200).send("Item removed successfully!"));
+  },
+  editItem: (req, res) => {
+    const {id} = req.params;
+    const { name, price, img } = req.body;
+    const db = req.app.get("db");
   }
 };

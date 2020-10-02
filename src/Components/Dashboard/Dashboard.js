@@ -11,11 +11,11 @@ export default class Dashboard extends Component {
   }
 
   render() {
-    const { inventory } = this.props;
+    const { inventory, selectProduct } = this.props;
     return (
       <div>
         {
-          inventory.map((el, i) => <Product product={el} key={i} deleteFn={this.deleteItem} />)
+          inventory.map((el, i) => <Product product={el} key={i} deleteFn={this.deleteItem} selectFn={selectProduct} />)
         }
       </div>
     )
