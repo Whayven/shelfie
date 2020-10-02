@@ -15,6 +15,13 @@ module.exports = {
       price,
       img
     })
-    .then(inventory => res.status(200).send(inventory))
+    .then(() => res.status(200).send("Item added successfully!"))
   },
+  deleteItem: (req, res) => {
+    const {id} = req.params;
+    const db = req.app.get('db');
+
+    db.delete_item(id)
+    .then(() => res.status(200).send("Item removed successfully!"));
+  }
 };

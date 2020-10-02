@@ -17,5 +17,6 @@ massive({
 
 app.get('/api/inventory', controller.getInventory);
 app.post('/api/inventory', controller.addItem);
+app.delete('/api/inventory/:id', controller.deleteItem);
 
 app.listen(SERVER_PORT, () => console.log(`Server running on port ${SERVER_PORT}`));
